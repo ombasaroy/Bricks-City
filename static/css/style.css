@@ -8,6 +8,9 @@
 /*======================================
 //--//-->   STYLES GENERALES
 ======================================*/
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -1518,7 +1521,7 @@ a:hover {
 
 .section-footer {
   padding-top: 60px;
-  margin-top: 60px;
+  /*margin-top: 60px;*/
   background: #f3f3f3;
 }
 
@@ -1670,6 +1673,32 @@ footer .credits {
   color: #ffffff;
 }
 
+
+.agent-single-top{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.partnerships{
+  margin-top: 3rem;
+  margin-bottom: 0;
+
+}
+
+.partner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.partner h2{
+  color: white;
+  padding: 0 15% 2rem 15%;
+  text-align: center;
+}
+
 @media (min-width: 576px) {
   .intro .intro-title {
     font-size: 3.5rem;
@@ -1684,7 +1713,7 @@ footer .credits {
   }
 
   .sinse-box {
-    padding: 1.5rem 2.5rem;
+    padding: 1rem 2rem;
     bottom: 20px;
   }
 
@@ -1694,6 +1723,7 @@ footer .credits {
 
   .sinse-box p {
     font-size: .8rem;
+    color: ;
   }
 
   .sinse-box p {
@@ -2061,8 +2091,17 @@ footer .credits {
     text-align: justify;
   }
 
+  .partnerships{
+  height: 50vh;
+}
+
+  .partner h2{
+  font-size: 1rem;
+  padding: 0 5% 2rem 5%;
+}
 
 
 
 }
+
 
