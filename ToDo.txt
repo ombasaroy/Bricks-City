@@ -1,0 +1,10 @@
+Create admin panel for blog
+- create post
+- edit post
+- view posts
+- delete posts
+- slug
+- 
+
+
+

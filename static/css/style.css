@@ -1699,6 +1699,10 @@ footer .credits {
   text-align: center;
 }
 
+.contact{
+  margin-bottom: 2rem;
+}
+
 @media (min-width: 576px) {
   .intro .intro-title {
     font-size: 3.5rem;
@@ -1723,10 +1727,13 @@ footer .credits {
 
   .sinse-box p {
     font-size: .8rem;
-    color: ;
   }
 
   .sinse-box p {
+    font-size: 1rem;
+  }
+
+  .title-single {
     font-size: 1rem;
   }
 }
@@ -2099,6 +2106,10 @@ footer .credits {
   font-size: 1rem;
   padding: 0 5% 2rem 5%;
 }
+
+   .intro-single .title-single-box .title-single {
+    font-size: 1.5rem;
+  }
 
 
 

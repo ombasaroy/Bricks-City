@@ -21,3 +21,16 @@ def about(request):
 def contact(request):
     context = {"nav": 'contact'}
     return render(request, 'contact.html', context)
+
+
+def partnerships(request):
+    return render(request, 'partnerships.html')
+
+
+def blog(request):
+    context = {'nav': 'blog'}
+    return render(request, 'blog.html', context)
+
+
+def single_blog(request):
+    return render(request, 'single-blog.html')
