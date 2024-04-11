@@ -1,5 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'bricks/base.html' %}
 {% load static %}
+{% block title %} News {% endblock %}
 
 {% block main %}
   <!--/ Intro Single star /-->
@@ -37,7 +38,7 @@
         <div class="col-md-4">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
-              <img src="{% static 'img/post-1.jpg' %}" alt="" class="img-b img-fluid">
+              <img src="{% static 'bricks/img/post-1.jpg' %}" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">

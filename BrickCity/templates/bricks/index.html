@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'bricks/base.html' %}
 {% load static %}
 
 {% block main %}
      <!--/ Carousel Star /-->
   <div class="intro intro-carousel">
     <div id="carousel" class="owl-carousel owl-theme">
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'img/slide-2.jpg' %})">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'bricks/img/slide-2.jpg' %})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'img/slide-1.jpg' %})">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'bricks/img/slide-1.jpg' %})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -50,7 +50,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'img/slide-3.jpg' %})">
+      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'bricks/img/slide-3.jpg' %})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -130,7 +130,7 @@
         <div class="carousel-item-b">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="{% static 'img/pack1.jpg' %}" alt="" class="img-a img-fluid">
+              <img src="{% static 'bricks/img/pack1.jpg' %}" alt="" class="img-a img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
@@ -159,7 +159,7 @@
         <div class="carousel-item-b">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="{% static 'img/pack2.jpg' %}" alt="" class="img-a img-fluid">
+              <img src="{% static 'bricks/img/pack2.jpg' %}" alt="" class="img-a img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
@@ -188,7 +188,7 @@
         <div class="carousel-item-b">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="{% static 'img/pack3.jpg' %}" alt="" class="img-a img-fluid">
+              <img src="{% static 'bricks/img/pack3.jpg' %}" alt="" class="img-a img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
@@ -217,7 +217,7 @@
         <div class="carousel-item-b">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="{% static 'img/pack4.jpg' %}" alt="" class="img-a img-fluid">
+              <img src="{% static 'bricks/img/pack4.jpg' %}" alt="" class="img-a img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
@@ -253,7 +253,7 @@
               <h2 class="title-a">Latest News</h2>
             </div>
             <div class="title-link">
-              <a href="blog-grid.html">All News
+              <a href="{% url 'blog' %}">All News
                 <span class="ion-ios-arrow-forward"></span>
               </a>
             </div>
@@ -264,7 +264,7 @@
         <div class="carousel-item-c">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
-              <img src="{% static 'img/post-2.jpg' %}" alt="" class="img-b img-fluid">
+              <img src="{% static 'bricks/img/post-2.jpg' %}" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
@@ -284,7 +284,7 @@
         <div class="carousel-item-c">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
-              <img src="{% static 'img/post-5.jpg' %}" alt="" class="img-b img-fluid">
+              <img src="{% static 'bricks/img/post-5.jpg' %}" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
@@ -304,7 +304,7 @@
         <div class="carousel-item-c">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
-              <img src="{% static 'img/post-7.jpg' %}" alt="" class="img-b img-fluid">
+              <img src="{% static 'bricks/img/post-7.jpg' %}" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
@@ -324,7 +324,7 @@
         <div class="carousel-item-c">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
-              <img src="{% static 'img/post-3.jpg' %}" alt="" class="img-b img-fluid">
+              <img src="{% static 'bricks/img/post-3.jpg' %}" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
@@ -350,7 +350,7 @@
 
 
 {#    Partnerships#}
-  <div class="container-fluid partnerships" style="background-image: url('{% static 'img/partner.jpg' %}'); height: 100vh; background-repeat: no-repeat; background-size: cover;">
+  <div class="container-fluid partnerships" style="background-image: url('{% static 'bricks/img/partner.jpg' %}'); height: 100vh; background-repeat: no-repeat; background-size: cover;">
     <div class="container partner">
         <h2>Join Forces with Bricks City LEGO and Build Something Amazing Together!</h2>
         <p class="intro-subtitle intro-price">

@@ -1,5 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'bricks/base.html' %}
 {% load static %}
+{% block title %} Partnerships {% endblock %}
 
 
 {% block main %}
@@ -9,8 +10,8 @@
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">Contact Us</h1>
-            <span class="color-text-a">We're Here to Help!Have a question, suggestion, or just want to say hello? We'd love to hear from you! Get in touch with the Bricks City LEGO team using the contact information below, and we'll get back to you as soon as possible.</span>
+            <h1 class="title-single">Partner With Us</h1>
+{#            <span class="color-text-a">We're Here to Help!Have a question, suggestion, or just want to say hello? We'd love to hear from you! Get in touch with the Bricks City LEGO team using the contact information below, and we'll get back to you as soon as possible.</span>#}
           </div>
         </div>
       </div>
@@ -18,19 +19,59 @@
   </section>
   <!--/ Intro Single End /-->
 
-  <!--/ Contact Star /-->
-  <section class="contact">
+    <!--/ Services Star /-->
+  <section class="section-services">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="contact-map box">
-            <div id="map" class="contact-map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3988.570433274166!2d36.978762925057374!3d-1.4330456740761282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x182f75c992b53e29%3A0x68eaceffb98af33f!2sHX8M%2BM3P%2C%20Athi%20River!3m2!1d-1.4326162999999998!2d36.9795976!5e0!3m2!1sen!2ske!4v1712584439786!5m2!1sen!2ske"
-                      width="100%" height="450" frameborder="0"  style="border:0;" allowfullscreen=""></iframe>
+      <div class="container row">
+        <div class="col">
+          <div class="card-box-c foo">
+            <div class="card-body-c">
+                <p class="content-c">
+                Are you passionate about inspiring creativity, fostering imagination, and bringing joy to families?
+                If so, we invite you to partner with Bricks City LEGO and become part of our vibrant community
+                dedicated to all things LEGO! At Bricks City LEGO, we believe in the power of collaboration to create
+                extraordinary experiences. Whether you're a business looking to sponsor an event, an organization
+                seeking to host a workshop, or an individual with a unique idea, we welcome partnerships of all shapes
+                and sizes.
+
+                    Here are some ways you can partner with us: </p>
+                <ul>
+                    <li><b>Collaborative Workshops</b> - Are you an expert in a particular field or have a special talent you'd
+                        like to share? Partner with us to host a collaborative workshop where you can engage with our
+                        visitors and inspire them with your knowledge and skills.
+                    </li>
+                    <li>
+                        <b>Educational Partnerships</b> - Are you an educator or part of an educational institution interested
+                        in integrating LEGO into your curriculum? Partner with us to develop custom educational
+                        programs and resources that engage students and enhance learning outcomes.
+
+                    </li>
+                    <li>
+                        <b>Community Events</b> - Join us in organizing community events, charity drives, or fundraisers that
+                        benefit local organizations and make a positive impact in our area.
+
+                    </li>
+                </ul>
+                <p class="content-c">
+                    No matter how you choose to partner with us, we're committed to working closely with you to create
+                    mutually beneficial opportunities that drive success and make a difference. Ready to embark on an
+                    exciting journey with Bricks City LEGO? Contact us today to explore partnership possibilities and
+                    let's build something amazing together.
+                </p>
 
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  <!--/ Services End /-->
+
+  <!--/ Contact Star /-->
+  <section class="contact">
+    <div class="container">
+      <div class="row">
+
         <div class="col-sm-12 section-t8">
           <div class="row">
             <div class="col-md-7">
@@ -59,7 +100,7 @@
                   </div>
                   <div class="col-md-12 mb-3">
                     <div class="form-group">
-                      <textarea name="message" class="form-control" name="message" cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                      <textarea name="message" class="form-control" cols="45" rows="8" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                       <div class="validation"></div>
                     </div>
                   </div>
