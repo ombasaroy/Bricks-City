@@ -2,45 +2,18 @@
 {% load static %}
 
 {% block content %}
-     <!-- Sale & Revenue Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-6 col-xl-3">
-                        <a href="#">
-                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa-regular fa-newspaper fa-3x" style="color: #ff9600"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Posts</p>
-                                <h6 class="mb-0">14</h6>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <a href="#">
-                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa-solid fa-comment-dots fa-3x" style="color: #17ff97"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Comments</p>
-                                <h6 class="mb-0">236</h6>
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-6 col-xl-3">
-                        <a href="#">
-                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                            <i class="fa-solid fa-square-plus fa-3x" style="color: #0094ff"></i>
-                            <div class="ms-3">
-                                <p class="mb-2">Create Post</p>
-{#                                <h6 class="mb-0">236</h6>#}
-                            </div>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- Sale & Revenue End -->
+
+    {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>Success</strong> {{ message}}.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+    {% endfor %}
+
+    {% include 'bricksadmin/stats.html' %}
 
             <!-- My Blogs  Start -->
             <div class="container-fluid pt-4 px-4">
@@ -62,66 +35,21 @@
                                 </tr>
                             </thead>
                             <tbody>
+
+                            {% for post in posts %}
                                 <tr>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
+                                    <td>{{ post.title}}</td>
+                                    <td><img src="{{ post.thumbnail.url }}" width="50"></td>
+                                    <td>{{ post.snippet }}</td>
+                                    <td>No comments</td>
+                                    <td>{{ post.date_created }}</td>
                                     <td>
-                                        <a class="btn btn-sm btn-primary" href="">Read</a>
+                                        <a class="btn btn-sm btn-info" href="">Read</a>
                                         <a class="btn btn-sm btn-warning" href="">Edit</a>
                                         <a class="btn btn-sm btn-danger" href="">Delete</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="">Read</a>
-                                        <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                        <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="">Read</a>
-                                        <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                        <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="">Read</a>
-                                        <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                        <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>01 Jan 2045</td>
-                                    <td>INV-0123</td>
-                                    <td>Jhon Doe</td>
-                                    <td>$123</td>
-                                    <td>Paid</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" href="">Read</a>
-                                        <a class="btn btn-sm btn-warning" href="">Edit</a>
-                                        <a class="btn btn-sm btn-danger" href="">Delete</a>
-                                    </td>
-                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
