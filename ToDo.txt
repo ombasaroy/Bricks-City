@@ -5,7 +5,8 @@ Create admin panel for blog
 - slug
 - replace image when updating post
 - checking the image size
--
+- automatically send messages to email
+- reset password
 
 
 

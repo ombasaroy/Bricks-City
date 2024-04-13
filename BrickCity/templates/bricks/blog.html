@@ -35,26 +35,29 @@
   <section class="news-grid grid">
     <div class="container">
       <div class="row">
+
+        {% for post in posts %}
         <div class="col-md-4">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
-              <img src="{% static 'bricks/img/post-1.jpg' %}" alt="" class="img-b img-fluid">
+              <img src="{{ post.thumbnail.url }}" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
                 <div class="card-title-b">
                   <h2 class="title-2">
-                    <a href="{% url 'single_blog' %}">Travel is comming
-                      <br> new</a>
+                    <a href="{% url 'single_blog' post.id %}">{{ post.body}}</a>
                   </h2>
                 </div>
                 <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
+                  <span class="date-b">{{ post.date_created }}</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {% endfor %}
+
       </div>
       <div class="row">
         <div class="col-sm-12">

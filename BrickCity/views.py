@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 
 # import for signing up
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
+from .forms import CreateUserForm, CreatePostForm
 
 from .decorataors import unauthenticated_user
 
@@ -83,7 +83,9 @@ def logoutuser(request):
 
 
 def index(request):
-    context = {"nav": 'index'}
+    posts = Post.objects.all()[:4]
+
+    context = {"nav": 'index', 'posts': posts}
     return render(request, 'bricks/index.html', context)
 
 
@@ -107,12 +109,16 @@ def partnerships(request):
 
 
 def blog(request):
-    context = {'nav': 'blog'}
+    posts = Post.objects.all()
+
+    context = {'nav': 'blog', 'posts': posts}
     return render(request, 'bricks/blog.html', context)
 
 
-def single_blog(request):
-    return render(request, 'bricks/single-blog.html')
+def single_blog(request, id):
+    post = Post.objects.get(id=id)
+    context = {'post': post}
+    return render(request, 'bricks/single-blog.html', context)
 
 
 # ADMIN STARTS HERE
@@ -149,6 +155,9 @@ def createpost(request):
         return redirect('bricksadmin')
 
     return render(request, 'bricksadmin/createpost.html')
+
+
+
 
 
 def editpost(request):
