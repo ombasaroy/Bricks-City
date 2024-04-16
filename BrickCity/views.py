@@ -13,6 +13,9 @@ from .forms import CreateUserForm, CreatePostForm
 
 from .decorataors import unauthenticated_user
 
+# Importing custom forms
+from .forms import CreatePostForm
+
 
 # def signup(request):
 #     form = UserCreationForm
@@ -83,7 +86,7 @@ def logoutuser(request):
 
 
 def index(request):
-    posts = Post.objects.all()[:4]
+    posts = Post.objects.order_by('-date_created')[:4]
 
     context = {"nav": 'index', 'posts': posts}
     return render(request, 'bricks/index.html', context)
@@ -141,23 +144,38 @@ def bricksadmin(request):
 #     Admin ends here
 
 
+# def createpost(request):
+#     if request.method == 'POST':
+#         title = request.POST.get('title').title()
+#         snippet = request.POST.get('snippet')
+#         body = request.POST.get('body')
+#         featured_image = request.FILES.get('featured')
+#         thumbnail = request.FILES.get('thumbnail')
+#
+#         query = Post(title=title, snippet=snippet, body=body, featured_image=featured_image, thumbnail=thumbnail)
+#         query.save()
+#         messages.success(request, title + " created successfully")
+#         return redirect('bricksadmin')
+#
+#     return render(request, 'bricksadmin/createpost.html')
+
 def createpost(request):
+    form = CreatePostForm
+
     if request.method == 'POST':
-        title = request.POST.get('title').title()
-        snippet = request.POST.get('snippet')
-        body = request.POST.get('body')
-        featured_image = request.FILES.get('featured')
-        thumbnail = request.FILES.get('thumbnail')
+        form = CreatePostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            title = form.cleaned_data.get('title')
+            messages.success(request, title + ' created successfully')
+            return redirect('bricksadmin')
+        else:
+            messages.error(request, 'Failed. Could not post')
+            return redirect('bricksadmin')
 
-        query = Post(title=title, snippet=snippet, body=body, featured_image=featured_image, thumbnail=thumbnail)
-        query.save()
-        messages.success(request, title + " created successfully")
-        return redirect('bricksadmin')
-
-    return render(request, 'bricksadmin/createpost.html')
-
-
-
+    else:
+        context = {'form': form}
+        return render(request, 'bricksadmin/createpost.html', context)
 
 
 def editpost(request):

@@ -4,7 +4,47 @@
 
 {% block content %}
      <!-- Sign Up Start -->
-        <div class="container-fluid">
+{#        <div class="container-fluid">#}
+{#            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">#}
+{#                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">#}
+{#                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">#}
+{#                        <div class="d-flex align-items-center justify-content-between mb-3">#}
+{##}
+{#                            <h3>Create Post</h3>#}
+{#                        </div>#}
+{#                        <form action="" method="post" enctype="multipart/form-data">#}
+{#                            {% csrf_token %}#}
+{#                        <div class="mb-3">#}
+{#                            <input type="text" name="title" class="form-control" id="floatingText" placeholder="Title">#}
+{#                        </div>#}
+{#                        <div class="mb-3">#}
+{#                            <input type="text" name="snippet" class="form-control" id="floatingInput" placeholder="Snippet">#}
+{#                        </div>#}
+{##}
+{#                        <div class="mb-4" id="editor">#}
+{#                            <textarea name="body" cols="30" rows="20"  placeholder="Enter post body" class="form-control"></textarea>#}
+{#                        </div>#}
+{#                        <div class="mb-4">#}
+{#                            <label for="featured">Featured image</label>#}
+{#                            <input type="file" name="featured" id="features" accept="image/*" class="form-control">#}
+{#                        </div>#}
+{#                        <div class="mb-4">#}
+{#                            <label for="thumbnail">Thumbnail</label>#}
+{#                            <input type="file" name="thumbnail" id="thumbnail" accept="image/*" class="form-control">#}
+{##}
+{#                        </div>#}
+{#                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Create Post</button>#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+        <!-- Sign Up End -->
+
+
+
+
+    <div class="container-fluid">
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
@@ -12,38 +52,26 @@
 
                             <h3>Create Post</h3>
                         </div>
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="{% url 'createpost' %}" method="post" enctype="multipart/form-data">
                             {% csrf_token %}
-                        <div class="mb-3">
-                            <input type="text" name="title" class="form-control" id="floatingText" placeholder="Title">
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" name="snippet" class="form-control" id="floatingInput" placeholder="Snippet">
-                        </div>
-
-                        <div class="mb-4" id="editor">
-                            <textarea name="body" cols="30" rows="20"  placeholder="Enter post body" class="form-control"></textarea>
-                        </div>
-                        <div class="mb-4">
-                            <label for="featured">Featured image</label>
-                            <input type="file" name="featured" id="features" accept="image/*" class="form-control">
-                        </div>
-                        <div class="mb-4">
-                            <label for="thumbnail">Thumbnail</label>
-                            <input type="file" name="thumbnail" id="thumbnail" accept="image/*" class="form-control">
-
-                        </div>
+                            {{ form.media }}
+                            {{ form.title }}
+                            {{ form.snippet }}
+                            {{ form.intro }}
+                            {{ form.body }}
+                            {{ form.author.label }}
+                            {{ form.author }}
+                            {{ form.featured_image.label }}
+                            {{ form.featured_image }}
+                            {{ form.thumbnail.label }}
+                            {{ form.thumbnail }}
+                            {{ form.quote }}
                         <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Create Post</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Sign Up End -->
-
-
-
-
 
 {% endblock %}
 
