@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -197,12 +198,24 @@ def createpost(request):
     return render(request, 'bricksadmin/createpost.html', context)
 
 
-def editpost(request):
-    return render(request, 'bricksadmin/editpost.html')
+def editpost(request, id):
+    post = MyPost.objects.get(id=id)
+    form = MyPostForm(instance=post)
+
+    if request.method == 'POST':
+        form = MyPostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            title = form.cleaned_data.get('title')
+            messages.success(request, title + ' updated successfully')
+            return redirect('bricksadmin')
+
+    context = {'form': form, 'post': post}
+    return render(request, 'bricksadmin/editpost.html', context)
 
 
-def comments(request):
-    return render(request, 'bricksadmin/comments.html')
+def mymessages(request):
+    return render(request, 'bricksadmin/messages.html')
 
 
 def stats(request):
@@ -222,3 +235,6 @@ def test(request):
 
     context = {'form': form}
     return render(request, 'bricksadmin/test.html', context)
+
+
+

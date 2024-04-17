@@ -15,9 +15,10 @@ urlpatterns = [
     path('single-blog/<id>', views.single_blog, name='single_blog'),
     path('bricksadmin/', views.bricksadmin, name='bricksadmin'),
     path('createpost/', views.createpost, name='createpost'),
-    path('editpost/', views.editpost, name='editpost'),
-    path('comments/', views.comments, name='comments'),
+    path('editpost/<id>', views.editpost, name='editpost'),
+    path('messages/', views.mymessages, name='messages'),
     path('stats/', views.stats, name='stats'),
     path('test/', views.test, name='test'),
+
 
 ]
