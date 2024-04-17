@@ -298,3 +298,12 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+.richtext-editor-container {
+    width: 100%; /* Make the container fill the entire width */
+}
+
+/* If your RichText editor is a <textarea> element, you can also style it directly */
+.richtext-editor-container textarea {
+    width: 100%; /* Make the textarea fill the entire width */
+}

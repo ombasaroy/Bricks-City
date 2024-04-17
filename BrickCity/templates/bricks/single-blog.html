@@ -12,6 +12,18 @@
             <h1 class="title-single">{{ post.title }}</h1>
           </div>
         </div>
+          <div class="col-md-12 col-lg-4">
+          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a href="{% url 'blog' %}">Go Back</a>
+              </li>
+{#              <li class="breadcrumb-item active" aria-current="page">#}
+{#                <a href="{% url 'blog' %}">Go back</a>#}
+{#              </li>#}
+            </ol>
+          </nav>
+        </div>
       </div>
     </div>
   </section>
@@ -46,22 +58,17 @@
               {{ post.intro }}
             </p>
             <p>
-              Proin eget tortor risus. Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum
-              porta. Pellentesque
-              in ipsum id orci porta dapibus. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-              dui. Lorem ipsum dolor sit amet.
-            </p>
-            <p>
               {{ post.body|safe }}
             </p>
 
-           <blockquote class="blockquote">
-              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-              <footer class="blockquote-footer">
-                <strong>Albert Vargas</strong>
-                <cite title="Source Title">Author</cite>
-              </footer>
-            </blockquote>
+{#           <blockquote class="blockquote">#}
+{#              <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>#}
+{#              <footer class="blockquote-footer">#}
+{#                <strong>Albert Vargas</strong>#}
+{#                <cite title="Source Title">Author</cite>#}
+{#              </footer>#}
+{#            </blockquote>#}
+
           </div>
 {#          <div class="post-footer">#}
 {#            <div class="post-share">#}

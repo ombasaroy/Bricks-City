@@ -18,7 +18,6 @@ urlpatterns = [
     path('editpost/', views.editpost, name='editpost'),
     path('comments/', views.comments, name='comments'),
     path('stats/', views.stats, name='stats'),
-
-
+    path('test/', views.test, name='test'),
 
 ]

@@ -8,6 +8,8 @@ Create admin panel for blog
 - automatically send messages to email
 - reset password
 - partner with us backend
+- logic for creating a post not working in views.py
+- Rich text editor not accepting the form control-class from bootstrap
 
 
 

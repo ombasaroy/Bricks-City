@@ -2,9 +2,10 @@
 
 
 from django import forms
+from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Post
+from .models import PartnershipMessage, Test, MyPost
 
 
 # Create our form below
@@ -14,65 +15,86 @@ class CreateUserForm(UserCreationForm):
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
 
 
-class CreatePostForm(forms.ModelForm):
+class SendPartnersMessage(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['fullname'].label = 'Enter full name'
+        self.fields['fullname'].widget.attrs.update({
+            'class': 'form-control mb-3',
+            'required': '',
+            'type': 'text',
+            'placeholder': 'Enter name',
+        })
+        self.fields['email'].widget.attrs.update({
+            'class': 'form-control mb-3',
+            'required': '',
+            'type': 'text',
+            'placeholder': 'Enter your email here',
+        })
+        self.fields['subject'].widget.attrs.update({
+            'class': 'form-control mb-3',
+            'required': '',
+            'type': 'text',
+            'placeholder': 'Enter subject here',
+        })
+        self.fields['message'].widget.attrs.update({
+            'class': 'form-control mb-3',
+            'required': '',
+            'type': 'text',
+            'placeholder': 'Type your message here'
+        })
+
+    class Meta:
+        model = PartnershipMessage
+        fields = '__all__'
+
+
+class CreateTestForm(ModelForm):
+    class Meta:
+        model = Test
+        fields = '__all__'
+
+
+class MyPostForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update({
             'class': 'form-control mb-3',
-            'required': '',
+            'required': True,
             'type': 'text',
-            'placeholder': 'Enter post title here',
+            'placeholder': 'Enter post title'
         })
-        self.fields['snippet'].widget.attrs.update({
-            'class': 'form-control mb-3',
-            'required': '',
-            'type': 'text',
-            'placeholder': 'Enter Snippet',
-        })
-
         self.fields['intro'].widget.attrs.update({
             'class': 'form-control mb-3',
-            'required': '',
+            'required': True,
             'type': 'text',
-            'placeholder': 'Enter intro',
+            'placeholder': 'Enter post introduction',
         })
         self.fields['body'].widget.attrs.update({
-            'class': 'form-control mb-3',
-            'required': '',
-            'type': 'text',
-            'placeholder': 'Enter your body here',
+            # 'class': 'form-control mb-3',
+            'required': True,
+            'type': 'textarea',
+            'placeholder': 'Enter post body',
         })
-        self.fields['featured_image'].label = 'Featured Image'
+
+        self.fields['author'].label = 'Author is set to default'
+        self.fields['author'].widget.attrs.update({
+            'class': 'form-control mb-3 width-100',
+            'type': 'text',
+            'disabled': True,
+        })
+
+        self.fields['featured_image'].label = 'Upload featured image'
         self.fields['featured_image'].widget.attrs.update({
             'class': 'form-control mb-3',
-            'required': '',
+            'required': True,
             'type': 'image',
-            'accept': 'image/*'
-        })
-        self.fields['thumbnail'].label = 'Thumbnail'
-        self.fields['thumbnail'].widget.attrs.update({
-            'class': 'form-control mb-3',
-            'required': '',
-            'type': 'image',
-            'accept': 'image/*'
-
-        })
-        self.fields['author'].label = 'Created by'
-        self.fields['author'].widget.attrs.update({
-            'class': 'form-control mb-3',
-            'required': '',
-            'type': 'text',
-            'disabled': True
-
-        })
-
-        self.fields['quote'].widget.attrs.update({
-            'class': 'form-control mb-3',
-            'type': 'text',
-            'placeholder': 'Enter quote',
+            'accept': 'image/*',
         })
 
     class Meta:
-        model = Post
+        model = MyPost
         fields = '__all__'
+
+
 

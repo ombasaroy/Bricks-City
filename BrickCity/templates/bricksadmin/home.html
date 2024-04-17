@@ -27,9 +27,8 @@
                             <thead>
                                 <tr class="text-dark">
                                     <th scope="col">Blog Title</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Snippet</th>
-                                    <th scope="col">Comments</th>
+                                    <th scope="col">Featured Image</th>
+                                    <th scope="col">Intro</th>
                                     <th scope="col">Date Posted</th>
                                     <th scope="col" style="text-align: center">Actions</th>
                                 </tr>
@@ -39,7 +38,7 @@
                             {% for post in posts %}
                                 <tr>
                                     <td>{{ post.title}}</td>
-                                    <td><img src="{{ post.thumbnail.url }}" width="50"></td>
+                                    <td><img src="{{ post.featured.url }}" width="50"></td>
                                     <td>{{ post.snippet }}</td>
                                     <td>No comments</td>
                                     <td>{{ post.date_created }}</td>

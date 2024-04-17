@@ -40,13 +40,13 @@
         <div class="col-md-4">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
-              <img src="{{ post.thumbnail.url }}" alt="" class="img-b img-fluid">
+              <img src="{{ post.featured_image.url }}" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
                 <div class="card-title-b">
                   <h2 class="title-2">
-                    <a href="{% url 'single_blog' post.id %}">{{ post.body}}</a>
+                    <a href="{% url 'single_blog' post.id %}">{{ post.title}}</a>
                   </h2>
                 </div>
                 <div class="card-date">
