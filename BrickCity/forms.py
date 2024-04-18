@@ -77,7 +77,7 @@ class MyPostForm(ModelForm):
             'placeholder': 'Enter post body',
         })
 
-        self.fields['author'].label = 'Author is set to default'
+        self.fields['author'].label = 'Admin is the default'
         self.fields['author'].widget.attrs.update({
             'class': 'form-control mb-3 width-100',
             'type': 'text',

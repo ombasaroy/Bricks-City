@@ -1,0 +1,27 @@
+{% extends 'bricksadmin/base.html' %}
+{% load static %}
+{% block title %} Edit Post {% endblock %}
+
+{% block content %}
+     <!-- Edit  Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="rounded p-4 p-sm-5 my-4 mx-3" style="background: #ffd7d7;">
+                        <div class="a-flex align-items-center justify-content-between mb-3" >
+                            <h3>Delete Post</h3>
+                            <p>Are you sure you want to delete "{{ post.title }}"?</p>
+                            <form action="{% url 'deletepost' post.id %}" method="post">
+                                {% csrf_token %}
+                                <a href="{% url 'bricksadmin' %}">Cancel</a>
+                                <button type="submit" class="btn btn-danger">Confirm</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Edit End -->
+
+
+{% endblock %}

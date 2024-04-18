@@ -214,6 +214,16 @@ def editpost(request, id):
     return render(request, 'bricksadmin/editpost.html', context)
 
 
+def deletepost(request, id):
+    post = MyPost.objects.get(id=id)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('bricksadmin')
+    context = {'post': post}
+    return render(request, 'bricksadmin/deletepost.html', context)
+
+
 def mymessages(request):
     return render(request, 'bricksadmin/messages.html')
 

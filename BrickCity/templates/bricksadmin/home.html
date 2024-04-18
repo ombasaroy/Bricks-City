@@ -46,7 +46,7 @@
                                     <td>
                                         <a class="btn btn-sm btn-info" href="{% url 'single_blog' post.id %}" target="_blank">Read</a>
                                         <a class="btn btn-sm btn-warning" href="{% url 'editpost' post.id %}">Edit</a>
-                                        <a class="btn btn-sm btn-danger" href="">Delete</a>
+                                        <a class="btn btn-sm btn-danger" href="{% url 'deletepost' post.id %}">Delete</a>
                                     </td>
                                 </tr>
                             {% endfor %}
