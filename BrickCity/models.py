@@ -34,3 +34,11 @@ class MyPost(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Advert(models.Model):
+    message = models.CharField(max_length=500, blank=True, null=True)
+    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+
+    def __str__(self):
+        return self.message

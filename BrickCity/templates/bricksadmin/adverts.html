@@ -1,5 +1,6 @@
 {% extends 'bricksadmin/base.html' %}
 {% load static %}
+{% block title %} Adverts {% endblock %}
 
 {% block content %}
 
@@ -10,42 +11,33 @@
         </div>
     {% endfor %}
 
-
     {% include 'bricksadmin/stats.html' %}
-
 
             <!-- My Blogs  Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">My posts</h6>
+                        <h6 class="mb-0">My Adverts</h6>
 {#                        <a href="">Show All</a>#}
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-dark">
-                                    <th scope="col">Blog Title</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Snippet</th>
+                                    <th scope="col">Description</th>
                                     <th scope="col">Date Posted</th>
                                     <th scope="col" style="text-align: center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                            {% for post in posts %}
+                            {% for ad in adverts %}
                                 <tr>
-                                    <td>{{ post.title}}</td>
+                                    <td>{{ ad.message }}</td>
+                                    <td>{{ ad.date_created }}</td>
                                     <td>
-                                        <img src="{{ post.featured_image.url }}" width="50" alt="">
-                                    </td>
-                                    <td>{{ post.intro|slice:50 }}</td>
-                                    <td>{{ post.date_created }}</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-info" href="{% url 'single_blog' post.id %}" target="_blank">Read</a>
-                                        <a class="btn btn-sm btn-warning" href="{% url 'editpost' post.id %}">Edit</a>
-                                        <a class="btn btn-sm btn-danger" href="{% url 'deletepost' post.id %}">Delete</a>
+                                        <a class="btn btn-sm btn-warning" href="{% url 'editadvert' ad.id %}">Edit</a>
+{#                                        <a class="btn btn-sm btn-danger" href="{% url 'deletepost' post.id %}">Delete</a>#}
                                     </td>
                                 </tr>
                             {% endfor %}

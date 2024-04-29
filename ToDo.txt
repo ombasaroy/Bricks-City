@@ -1,18 +1,16 @@
 TO DO
 
-
-- delete posts
 - slug
 - replace image when updating post
 - checking the image size
 - automatically send messages to email
-- reset password
-- partner with us backend
+- Reset password
 - Rich text editor not accepting the form control-class from bootstrap
 - SEO
-- fix search
-- fix partner with us
+- fix partner with us and the backend
 - how to activate the search on the website to search the entire website
-
-
+- pagination for blog section
+- pagination for admin posts, adverts
+- Booking  play sessions
+- Adverts alerts on the tops
 

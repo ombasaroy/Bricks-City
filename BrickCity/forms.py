@@ -5,7 +5,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import PartnershipMessage, Test, MyPost
+from .models import PartnershipMessage, Test, MyPost, Advert
 
 
 # Create our form below
@@ -97,4 +97,17 @@ class MyPostForm(ModelForm):
         fields = '__all__'
 
 
+class AdvertForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['message'].label = ''
+        self.fields['message'].widget.attrs.update({
+            'class': 'form-control mb-3',
+            'required': True,
+            'type': 'text',
+            'placeholder': 'Enter your advert'
+        })
 
+    class Meta:
+        model = Advert
+        fields = '__all__'

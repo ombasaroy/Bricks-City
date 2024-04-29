@@ -1,0 +1,27 @@
+{% extends 'bricksadmin/base.html' %}
+{% load static %}
+{% block title %} Create Advert {% endblock %}
+
+
+{% block content %}
+        <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Sign Up Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <form action="" method="post"class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+                        {% csrf_token %}
+
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h3>Create Advert</h3>
+                        </div>
+                        {{ form }}
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Create Advert</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Sign Up End -->
+    </div>
+
+{% endblock %}

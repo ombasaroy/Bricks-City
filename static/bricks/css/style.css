@@ -2115,4 +2115,24 @@ footer .credits {
 
 }
 
+  /* Style for the container */
+.moving-text-container {
+  width: 100%; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+  overflow: hidden; /* Hide overflowing text */
+  position: relative; /* Positioning for absolute positioning of text */
+  }
+
+  /* Style for the moving text */
+.moving-text {
+  position: absolute; /* Position the text absolutely within the container */
+  animation: moveRightToLeft 20s linear infinite; /* Animation properties */
+}
+
+/* Animation keyframes */
+@keyframes moveRightToLeft {
+  0% { left: 100%; } /* Start from the right edge of the container */
+  100% { left: -100%; } /* Move to the left edge of the container */
+}
+
 

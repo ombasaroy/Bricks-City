@@ -1,0 +1,27 @@
+{% extends 'bricksadmin/base.html' %}
+{% load static %}
+{% block title %} Edit Advert {% endblock %}
+
+{% block content %}
+     <!-- Edit  Start -->
+        <div class="container-fluid">
+            <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h3>Edit Advert</h3>
+                        </div>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form }}
+
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Update Advert</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Edit End -->
+
+
+{% endblock %}

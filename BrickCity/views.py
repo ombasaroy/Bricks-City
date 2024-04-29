@@ -6,14 +6,14 @@ from django.contrib.auth.decorators import login_required
 # import for sending emails
 from django.core.mail import send_mail
 
-from .models import MyPost
+from .models import MyPost, Advert
 
 # imports for logging in and loging out
 from django.contrib.auth import authenticate, login, logout
 
 # import for signing up
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm, SendPartnersMessage, CreateTestForm, MyPostForm
+from .forms import CreateUserForm, SendPartnersMessage, CreateTestForm, MyPostForm, AdvertForm
 
 from .decorataors import unauthenticated_user
 
@@ -89,10 +89,10 @@ def logoutuser(request):
 
 
 def index(request):
-
     posts = MyPost.objects.order_by('-date_created')[:4]
+    myadverts = Advert.objects.all()
 
-    context = {"nav": 'index', 'posts': posts}
+    context = {"nav": 'index', 'posts': posts, 'myadverts': myadverts}
     return render(request, 'bricks/index.html', context)
 
 
@@ -245,6 +245,48 @@ def test(request):
 
     context = {'form': form}
     return render(request, 'bricksadmin/test.html', context)
+
+
+def advert(request):
+    myadverts = Advert.objects.order_by('-date_created')[:1]
+    context = {'adverts': myadverts}
+    return render(request, 'bricksadmin/adverts.html', context)
+
+
+def createadvert(request):
+    form = AdvertForm
+
+    if request.method == "POST":
+        form = AdvertForm(request.POST)
+        if form.is_valid():
+            advert = form.cleaned_data.get('message')
+            form.save()
+            messages.success(request, advert + ' created successfully')
+            return redirect('bricksadmin')
+        else:
+            form = AdvertForm
+
+    context = {'form': form}
+    return render(request, 'bricksadmin/createadvert.html', context)
+
+
+def editadvert(request, id):
+    advert = Advert.objects.get(id=id)
+    form = AdvertForm(instance=advert)
+
+    if request.method == 'POST':
+        form = AdvertForm(request.POST, instance=advert)
+        if form.is_valid():
+            form.save()
+            advertname = form.cleaned_data.get('message')
+            messages.success(request, advertname + ' updated successfully')
+            return redirect('advert')
+        else:
+            form = AdvertForm(instance=advert)
+
+    context = {'form': form}
+    return render(request, 'bricksadmin/editadvert.html', context)
+
 
 
 
