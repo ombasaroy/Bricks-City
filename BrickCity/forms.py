@@ -107,6 +107,20 @@ class AdvertForm(ModelForm):
             'type': 'text',
             'placeholder': 'Enter your advert'
         })
+        self.fields['title'].label = ''
+        self.fields['title'].widget.attrs.update({
+            'class': 'form-control mb-3',
+            'required': True,
+            'type': 'text',
+            'placeholder': 'Enter your title'
+        })
+        self.fields['image'].label = ''
+        self.fields['image'].widget.attrs.update({
+            'class': 'form-control mb-3',
+            'required': True,
+            'type': 'file',
+            'accept': 'image/*'
+        })
 
     class Meta:
         model = Advert

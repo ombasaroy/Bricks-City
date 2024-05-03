@@ -2134,5 +2134,3 @@ footer .credits {
   0% { left: 100%; } /* Start from the right edge of the container */
   100% { left: -100%; } /* Move to the left edge of the container */
 }
-
-

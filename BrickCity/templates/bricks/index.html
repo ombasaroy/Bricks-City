@@ -3,6 +3,28 @@
 
 {% block main %}
 
+    <div class="modal fade" id="advertisementModal" tabindex="-1" role="dialog" aria-labelledby="advertisementModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          {% for ad in myadverts %}
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h5 class="modal-title" id="advertisementModalLabel">{{ ad.title }}</h5>
+            <h5 class="modal-title" id="advertisementModalLabel">{{ ad.title }}</h5>
+            <h5 class="modal-title" id="advertisementModalLabel"><img src="{{ ad.image.url }}" alt="advert"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <img src="{{ ad.message }}" alt="" class="img-fluid">
+          </div>
+        </div>
+          {% endfor %}
+      </div>
+    </div>
+
+
 
      <!--/ Carousel Star /-->
   <div class="intro intro-carousel">
@@ -266,25 +288,30 @@
       <div id="new-carousel" class="owl-carousel owl-theme">
 
           {% for post in posts %}
-        <div class="carousel-item-c">
+        <div class="carousel-item-c" style="box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); ">
           <div class="card-box-b card-shadow news-box">
             <div class="img-box-b">
               <img src="{{ post.featured_image.url }}" alt="" class="img-b img-fluid" width="100" height="100">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="{% url 'single_blog' post.id %}">{{ post.title}}</a>
-                  </h2>
-                </div>
+
                 <div class="card-date">
-                  <span class="date-b">{{ post.date_created }}</span>
+{#                  <span class="date-b">{{ post.date_created }}</span>#}
                 </div>
               </div>
             </div>
+
           </div>
-        </div>
+            <div class="card-title-b">
+                <h5 class="title-2" style="margin-top: 1rem">
+                    <a href="{% url 'single_blog' post.id %}" style="font-size: 1rem;">{{ post.title}}</a>
+                </h5>
+            </div>
+            <div>
+                <p>{{ post.intro|slice:200 }}... <a href="{% url 'single_blog' post.id %}" style="color: #ff9600;">read more</a></p>
+            </div>
+            </div>
           {% endfor %}
 
       </div>

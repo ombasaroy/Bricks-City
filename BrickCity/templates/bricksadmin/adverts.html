@@ -18,13 +18,14 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">My Adverts</h6>
-{#                        <a href="">Show All</a>#}
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-dark">
-                                    <th scope="col">Description</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Message</th>
+                                    <th scope="col">Image</th>
                                     <th scope="col">Date Posted</th>
                                     <th scope="col" style="text-align: center">Actions</th>
                                 </tr>
@@ -33,11 +34,15 @@
 
                             {% for ad in adverts %}
                                 <tr>
+                                    <td>{{ ad.title }}</td>
                                     <td>{{ ad.message }}</td>
+                                    <td>
+                                        <img src="{{ ad.image.url }}" class="img-fluid" alt="">
+                                    </td>
                                     <td>{{ ad.date_created }}</td>
                                     <td>
                                         <a class="btn btn-sm btn-warning" href="{% url 'editadvert' ad.id %}">Edit</a>
-{#                                        <a class="btn btn-sm btn-danger" href="{% url 'deletepost' post.id %}">Delete</a>#}
+                                        <a class="btn btn-sm btn-danger" href="{% url 'deleteadvert' ad.id %}">Delete</a>
                                     </td>
                                 </tr>
                             {% endfor %}

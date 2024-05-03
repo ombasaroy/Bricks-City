@@ -225,7 +225,10 @@ def deletepost(request, id):
 
 
 def mymessages(request):
-    return render(request, 'bricksadmin/messages.html')
+    posts_count = MyPost.objects.all().count()
+
+    context = {'posts_count': posts_count}
+    return render(request, 'bricksadmin/messages.html', context)
 
 
 def stats(request):
@@ -248,7 +251,7 @@ def test(request):
 
 
 def advert(request):
-    myadverts = Advert.objects.order_by('-date_created')[:1]
+    myadverts = Advert.objects.order_by('-date_created')
     context = {'adverts': myadverts}
     return render(request, 'bricksadmin/adverts.html', context)
 
@@ -257,9 +260,9 @@ def createadvert(request):
     form = AdvertForm
 
     if request.method == "POST":
-        form = AdvertForm(request.POST)
+        form = AdvertForm(request.POST, request.FILES)
         if form.is_valid():
-            advert = form.cleaned_data.get('message')
+            advert = form.cleaned_data.get('title')
             form.save()
             messages.success(request, advert + ' created successfully')
             return redirect('bricksadmin')
@@ -275,7 +278,7 @@ def editadvert(request, id):
     form = AdvertForm(instance=advert)
 
     if request.method == 'POST':
-        form = AdvertForm(request.POST, instance=advert)
+        form = AdvertForm(request.POST, request.FILES, instance=advert)
         if form.is_valid():
             form.save()
             advertname = form.cleaned_data.get('message')
@@ -288,5 +291,12 @@ def editadvert(request, id):
     return render(request, 'bricksadmin/editadvert.html', context)
 
 
+def deleteadvert(request, id):
+    ad = Advert.objects.get(id=id)
 
+    if request.method == 'POST':
+        ad.delete()
+        return redirect('advert')
+    context = {'ad': ad}
+    return render(request, 'bricksadmin/deleteadvert.html', context)
 

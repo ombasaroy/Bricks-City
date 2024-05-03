@@ -4,7 +4,7 @@
 
 {% block main %}
   <!--/ Intro Single star /-->
-  <section class="intro-single">
+  <section class="intro-single" style="background-image: url('{% static "bricks/img/lego.jpg" %}')">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-lg-8">
@@ -32,29 +32,35 @@
 
 
     <!--/ News Grid Star /-->
-  <section class="news-grid grid">
+  <section class="news-grid grid" style="background-image: url('{% static "bricks/img/lego.jpg" %}')">
     <div class="container">
       <div class="row">
 
         {% for post in posts %}
-        <div class="col-md-4">
-          <div class="card-box-b card-shadow news-box">
+        <div class="col-md-4" style="box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); margin: 2px">
+          <div class="card-box-b card-shadow news-box" style="margin-bottom: 0">
             <div class="img-box-b">
               <img src="{{ post.featured_image.url }}" alt="" class="img-b img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-header-b">
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="{% url 'single_blog' post.id %}">{{ post.title}}</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">{{ post.date_created }}</span>
-                </div>
+
+
               </div>
             </div>
           </div>
+            <div class="card-title-b">
+                  <h4 class="title-2" style="margin-top: 1rem">
+                    <a href="{% url 'single_blog' post.id %}" style="font-size: 1rem;">{{ post.title}}</a>
+                  </h4>
+                </div>
+            <div class="card-date">
+                <span class="date-b" style="font-size: 0.8rem; color: gray">Date: {{ post.date_created }}</span>
+            </div>
+        <div>
+            <p>{{ post.intro|slice:200 }}... <a href="{% url 'single_blog' post.id %}" style="color: #ff9600;">read more</a></p>
+        </div>
+
         </div>
         {% endfor %}
 

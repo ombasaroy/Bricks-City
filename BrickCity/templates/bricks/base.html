@@ -24,8 +24,8 @@
   <link href="{% static 'bricks/lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
   <link href="{% static 'bricks/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-  <!-- Main Stylesheet File -->
+  <!-- Include Bootstrap CSS and JavaScript -->
+    <!-- Main Stylesheet File -->
   <link href="{% static 'bricks/css/style.css' %}" rel="stylesheet">
 
 </head>
@@ -54,7 +54,6 @@
     </div>
   </div>
   <!--/ Form Search End /-->
-
 
 
   <!--/ Nav Star /-->
@@ -107,56 +106,6 @@
     </div>
   </nav>
 
-      <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
-        aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <a class="navbar-brand text-brand" href="{% url 'index' %}"><img src="{% static 'bricks/img/logo.jpg' %}" width="100" class="img-fluid" alt=""></a>
-      <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-search" aria-hidden="true"></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link {% if nav == 'index' %} active {% endif %}" href="{% url 'index' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if nav == 'about' %} active {% endif %}" href="{% url 'about' %}">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if nav == 'services' %} active {% endif %}" href="{% url 'services' %}">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if nav == 'blog' %} active {% endif %} " href="{% url 'blog' %}">News</a>
-          </li>
-{#          <li class="nav-item dropdown">#}
-{#            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"#}
-{#              aria-haspopup="true" aria-expanded="false">#}
-{#              Pages#}
-{#            </a>#}
-{#            <div class="dropdown-menu" aria-labelledby="navbarDropdown">#}
-{#              <a class="dropdown-item" href="property-single.html">Property Single</a>#}
-{#              <a class="dropdown-item" href="blog-single.html">Blog Single</a>#}
-{#              <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>#}
-{#              <a class="dropdown-item" href="agent-single.html">Agent Single</a>#}
-{#            </div>#}
-{#          </li>#}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
-          </li>
-        </ul>
-      </div>
-      <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block" data-toggle="collapse"
-        data-target="#navbarTogglerDemo01" aria-expanded="false">
-        <span class="fa fa-search" aria-hidden="true"></span>
-      </button>
-    </div>
-  </nav>
   </div>
 
 
@@ -328,6 +277,15 @@
 
   <!-- Template Main Javascript File -->
   <script src="{% static 'bricks/js/main.js' %}"></script>
+    <script>
+      $(document).ready(function() {
+        // Check if the modal has been shown before
+        if (!sessionStorage.getItem('advertisementShown')) {
+          $('#advertisementModal').modal('show'); // Show the modal
+          sessionStorage.setItem('advertisementShown', 'true'); // Set a flag in session storage
+        }
+      });
+    </script>
 
 </body>
 </html>

@@ -13,16 +13,18 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('partnerships/', views.partnerships, name='partnerships'),
-    path('advert/', views.advert, name='advert'),
     path('blog/', views.blog, name='blog'),
     path('single-blog/<id>', views.single_blog, name='single_blog'),
     path('bricksadmin/', views.bricksadmin, name='bricksadmin'),
+
 
     path('createpost/', views.createpost, name='createpost'),
     path('editpost/<id>', views.editpost, name='editpost'),
     path('deletepost/<id>', views.deletepost, name='deletepost'),
 
+    path('advert/', views.advert, name='advert'),
     path('createadvert/', views.createadvert, name='createadvert'),
+    path('deleteadvert/<id>', views.deleteadvert, name='deleteadvert'),
     path('editadvert/<id>', views.editadvert, name='editadvert'),
 
 

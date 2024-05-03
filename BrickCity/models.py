@@ -37,7 +37,9 @@ class MyPost(models.Model):
 
 
 class Advert(models.Model):
+    title = models.CharField(max_length=50, blank=True, null=True)
     message = models.CharField(max_length=500, blank=True, null=True)
+    image = models.ImageField(upload_to='adverts/', blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
