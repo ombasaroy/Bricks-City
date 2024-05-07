@@ -6,14 +6,14 @@ from django.contrib.auth.decorators import login_required
 # import for sending emails
 from django.core.mail import send_mail
 
-from .models import MyPost, Advert
+from .models import MyPost, Advert, BookSession, Message
 
 # imports for logging in and loging out
 from django.contrib.auth import authenticate, login, logout
 
 # import for signing up
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm, SendPartnersMessage, CreateTestForm, MyPostForm, AdvertForm
+from .forms import CreateUserForm, CreateTestForm, MyPostForm, AdvertForm, BookingForm
 
 from .decorataors import unauthenticated_user
 
@@ -112,23 +112,8 @@ def contact(request):
 
 
 def partnerships(request):
-    form = SendPartnersMessage
-    if request.method == "POST":
-        fullname = request.POST.get('fullname')
-        message = request.POST.get('message')
-        sender_email = request.POST.get('email')
 
-        recipient_email = 'ombasaroy@gmail.com'  # Replace with your Gmail address
-
-        send_mail(
-            'Message from ' + fullname,
-            message,
-            sender_email,
-            [recipient_email]
-        )
-        return HttpResponse('email_sent.html')
-
-    context = {'form': form}
+    context = {}
     return render(request, 'bricks/partnerships.html', context)
 
 
@@ -146,11 +131,44 @@ def single_blog(request, id):
     return render(request, 'bricks/single-blog.html', context)
 
 
-# ADMIN STARTS HERE
-# @login_required(login_url='signin')
-# def bricksadmin(request):
-#     return render(request, 'bricksadmin/home.html')
-# ADMIN ENDS HERE
+def booking(request):
+    form = BookingForm
+
+    if request.method == "POST":
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data.get('fullname')
+            form.save()
+            messages.success(request, 'Greetings ' + name + '. Your Booking is successful')
+            return redirect('booking')
+        else:
+            name = form.cleaned_data.get('fullname')
+            messages.success(request, 'Booking Failed')
+            return redirect('booking')
+
+    context = {'form': form}
+    return render(request, 'bricks/booksession.html', context)
+
+
+@login_required(login_url='signin')
+def bookedsessions(request):
+    bookings = BookSession.objects.order_by('date_booked')
+    context = {'bookings': bookings}
+    return render(request, 'bricksadmin/bookedsessions.html', context)
+
+
+@login_required(login_url='signin')
+def deletebooking(request, id):
+    booking = BookSession.objects.get(id=id)
+
+    if request.method == 'POST':
+        booking.delete()
+        fullname = booking.fullname
+        messages.success(request, 'Booking for ' + fullname + ' deleted successfully')
+        return redirect('bookedsessions')
+
+    context = {'booking': booking}
+    return render(request, 'bricksadmin/deletebooking.html', context)
 
 
 #     Admin starts here
@@ -163,25 +181,7 @@ def bricksadmin(request):
     return render(request, 'bricksadmin/home.html', context)
 
 
-#     Admin ends here
-
-
-# def createpost(request):
-#     if request.method == 'POST':
-#         title = request.POST.get('title').title()
-#         snippet = request.POST.get('snippet')
-#         intro = request.POST.get('intro')
-#         body = request.POST.get('body')
-#         quote = request.POST.get('quote')
-#         featured_image = request.FILES.get('featured')
-#
-#         query = Post(title=title, snippet=snippet, intro=intro, body=body, quote=quote, featured_image=featured_image)
-#         query.save()
-#         messages.success(request, title + " created successfully")
-#         return redirect('bricksadmin')
-#
-#     return render(request, 'bricksadmin/createpost.html')
-
+@login_required(login_url='signin')
 def createpost(request):
     form = MyPostForm
 
@@ -189,8 +189,9 @@ def createpost(request):
         form = MyPostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, "Post was created successfully")
-            return redirect('createpost')
+            postname = form.cleaned_data.get('title')
+            messages.success(request, postname + "Post was created successfully")
+            return redirect('bricksadmin')
         else:
             messages.error(request, 'FAILED!!')
 
@@ -198,6 +199,7 @@ def createpost(request):
     return render(request, 'bricksadmin/createpost.html', context)
 
 
+@login_required(login_url='signin')
 def editpost(request, id):
     post = MyPost.objects.get(id=id)
     form = MyPostForm(instance=post)
@@ -214,6 +216,7 @@ def editpost(request, id):
     return render(request, 'bricksadmin/editpost.html', context)
 
 
+@login_required(login_url='signin')
 def deletepost(request, id):
     post = MyPost.objects.get(id=id)
 
@@ -224,6 +227,7 @@ def deletepost(request, id):
     return render(request, 'bricksadmin/deletepost.html', context)
 
 
+@login_required(login_url='signin')
 def mymessages(request):
     posts_count = MyPost.objects.all().count()
 
@@ -250,12 +254,14 @@ def test(request):
     return render(request, 'bricksadmin/test.html', context)
 
 
+@login_required(login_url='signin')
 def advert(request):
     myadverts = Advert.objects.order_by('-date_created')
     context = {'adverts': myadverts}
     return render(request, 'bricksadmin/adverts.html', context)
 
 
+@login_required(login_url='signin')
 def createadvert(request):
     form = AdvertForm
 
@@ -273,6 +279,7 @@ def createadvert(request):
     return render(request, 'bricksadmin/createadvert.html', context)
 
 
+@login_required(login_url='signin')
 def editadvert(request, id):
     advert = Advert.objects.get(id=id)
     form = AdvertForm(instance=advert)
@@ -291,6 +298,7 @@ def editadvert(request, id):
     return render(request, 'bricksadmin/editadvert.html', context)
 
 
+@login_required(login_url='signin')
 def deleteadvert(request, id):
     ad = Advert.objects.get(id=id)
 

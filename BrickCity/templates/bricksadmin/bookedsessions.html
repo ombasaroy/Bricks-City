@@ -1,0 +1,56 @@
+{% extends 'bricksadmin/base.html' %}
+{% load static %}
+{% block title %} Booked Sessions{% endblock %}
+
+{% block content %}
+     {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <b>{{ message}}</b>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+
+
+    {% include 'bricksadmin/stats.html' %}
+
+
+            <!-- My Blogs  Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Booked Sessions</h6>
+{#                        <a href="">Show All</a>#}
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Booked Date</th>
+                                    <th scope="col" style="text-align: center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for booking in bookings %}
+                                <tr>
+                                    <td>{{ booking.fullname}}</td>
+                                    <td>{{ booking.phone}}</td>
+                                    <td>{{ booking.email}}</td>
+                                    <td>{{ booking.date_booked}}</td>
+                                    <td>
+                                        <a class="btn btn-sm btn-danger" href="{% url 'deletebooking' booking.id %}">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- My Blog  End -->
+
+{% endblock %}
+

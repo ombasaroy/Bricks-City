@@ -4,11 +4,11 @@ from ckeditor.fields import RichTextField
 
 
 # Create your models here
-class PartnershipMessage(models.Model):
+class Message(models.Model):
     fullname = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=100, blank=True, null=True)
-    subject = models.CharField(max_length=100, blank=True, null=True)
-    message = RichTextField(max_length=100, blank=True, null=True)
+    phone = models.CharField(max_length=100, blank=True, null=True)
+    message = models.CharField(max_length=300, blank=True, null=True)
 
     def __str__(self):
         return self.fullname
@@ -43,4 +43,15 @@ class Advert(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
-        return self.message
+        return self.title
+
+
+class BookSession(models.Model):
+    fullname = models.CharField(max_length=150)
+    phone = models.CharField(max_length=150)
+    email = models.EmailField(max_length=100)
+    date_booked = models.DateField(null=True, blank=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.fullname

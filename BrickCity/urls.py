@@ -1,13 +1,11 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('signup/', views.signup, name='signup'),
-    path('signin/', views.signin, name='signin'),
-    path('logoutuser/', views.logoutuser, name='logoutuser'),
+
     path('', views.index, name='index'),
     path('services/', views.services, name='services'),
     path('about/', views.about, name='about'),
@@ -15,6 +13,14 @@ urlpatterns = [
     path('partnerships/', views.partnerships, name='partnerships'),
     path('blog/', views.blog, name='blog'),
     path('single-blog/<id>', views.single_blog, name='single_blog'),
+
+    path('booking/', views.booking, name='booking'),
+    path('bookedsessions/', views.bookedsessions, name='bookedsessions'),
+    path('deletebooking/<id>', views.deletebooking, name='deletebooking'),
+
+    path('signup/', views.signup, name='signup'),
+    path('signin/', views.signin, name='signin'),
+    path('logoutuser/', views.logoutuser, name='logoutuser'),
     path('bricksadmin/', views.bricksadmin, name='bricksadmin'),
 
 

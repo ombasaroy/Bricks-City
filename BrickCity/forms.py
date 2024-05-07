@@ -1,11 +1,13 @@
 # This is where we customise our custom forms
 
-
+import datetime
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import PartnershipMessage, Test, MyPost, Advert
+from bootstrap_datepicker.widgets import DatePicker
+
+from .models import Test, MyPost, Advert, BookSession
 
 
 # Create our form below
@@ -13,40 +15,6 @@ class CreateUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
-
-
-class SendPartnersMessage(ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['fullname'].label = 'Enter full name'
-        self.fields['fullname'].widget.attrs.update({
-            'class': 'form-control mb-3',
-            'required': '',
-            'type': 'text',
-            'placeholder': 'Enter name',
-        })
-        self.fields['email'].widget.attrs.update({
-            'class': 'form-control mb-3',
-            'required': '',
-            'type': 'text',
-            'placeholder': 'Enter your email here',
-        })
-        self.fields['subject'].widget.attrs.update({
-            'class': 'form-control mb-3',
-            'required': '',
-            'type': 'text',
-            'placeholder': 'Enter subject here',
-        })
-        self.fields['message'].widget.attrs.update({
-            'class': 'form-control mb-3',
-            'required': '',
-            'type': 'text',
-            'placeholder': 'Type your message here'
-        })
-
-    class Meta:
-        model = PartnershipMessage
-        fields = '__all__'
 
 
 class CreateTestForm(ModelForm):
@@ -124,4 +92,45 @@ class AdvertForm(ModelForm):
 
     class Meta:
         model = Advert
+        fields = '__all__'
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
+class BookingForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['fullname'].label = 'Fullname'
+        self.fields['fullname'].widget.attrs.update({
+            'class': 'form-control form-control-lg form-control-a mb-3',
+            'required': True,
+            'type': 'text',
+            'placeholder': 'Enter your fullname'
+        })
+        self.fields['phone'].label = ''
+        self.fields['phone'].widget.attrs.update({
+            'class': 'form-control form-control-lg form-control-a mb-3',
+            'required': True,
+            'type': 'text',
+            'placeholder': 'Enter your phone'
+        })
+        self.fields['email'].label = ''
+        self.fields['email'].widget.attrs.update({
+            'class': 'form-control form-control-lg form-control-a mb-3',
+            'required': True,
+            'type': 'email',
+            'placeholder': 'Enter your email'
+        })
+
+        self.fields['date_booked'] = forms.DateField(widget=forms.DateInput(attrs={
+            'class': 'form-control form-control-lg form-control-a mb-3',
+            # 'type': 'datetime-local',
+            'type': 'date',
+            'min': str(datetime.date.today())
+        }))
+
+    class Meta:
+        model = BookSession
         fields = '__all__'
