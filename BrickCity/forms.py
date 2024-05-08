@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from bootstrap_datepicker.widgets import DatePicker
 
-from .models import Test, MyPost, Advert, BookSession
+from .models import Test, MyPost, Advert, BookSession, Message
 
 
 # Create our form below
@@ -133,4 +133,39 @@ class BookingForm(ModelForm):
 
     class Meta:
         model = BookSession
+        fields = '__all__'
+
+
+class MessageForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['fullname'].widget.attrs.update({
+            'class': 'form-control form-control-lg form-control-a mb-3',
+            'required': True,
+            'type': 'text',
+            'placeholder': 'Enter your fullname'
+        })
+        self.fields['email'].widget.attrs.update({
+            'class': 'form-control form-control-lg form-control-a mb-3',
+            'required': True,
+            'type': 'email',
+            'placeholder': 'Enter your email'
+        })
+        self.fields['phone'].widget.attrs.update({
+            'class': 'form-control form-control-lg form-control-a mb-3',
+            'required': True,
+            'type': 'text',
+            'placeholder': 'Enter your phone number'
+        })
+        self.fields['message'].widget.attrs.update({
+            'class': 'form-control form-control-lg form-control-a mb-3',
+            'required': True,
+            'type': 'textarea',  # Change type to 'textarea'
+            'cols': '45',  # 'cols' and 'rows' are not applicable for textarea
+            'rows': '8',
+            'placeholder': 'Please write something for us'
+        })
+
+    class Meta:
+        model = Message
         fields = '__all__'

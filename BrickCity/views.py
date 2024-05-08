@@ -13,7 +13,7 @@ from django.contrib.auth import authenticate, login, logout
 
 # import for signing up
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm, CreateTestForm, MyPostForm, AdvertForm, BookingForm
+from .forms import CreateUserForm, CreateTestForm, MyPostForm, AdvertForm, BookingForm, MessageForm
 
 from .decorataors import unauthenticated_user
 
@@ -107,8 +107,21 @@ def about(request):
 
 
 def contact(request):
-    context = {"nav": 'contact'}
-    return render(request, 'bricks/contact.html', context)
+    if request.method == 'POST':
+        fullname = request.POST.get('fullname')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        query = Message(fullname=fullname, phone=phone, email=email, message=message)
+        query.save()
+
+        messages.success(request, ' Your message has been sent')
+        return redirect('contact')
+
+    else:
+        context = {"nav": 'contact'}
+        return render(request, 'bricks/contact.html', context)
 
 
 def partnerships(request):
