@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ab31f51-e113-4cff-83d8-f1e35fb33be6" name="Changes" comment="" />
+    <list default="true" id="77e2c58d-7250-402a-b3c6-040cbdfb3732" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +13,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2gBh5hWSg15JLqORNPW0k4T9UWP" />
+  <component name="ProjectId" id="2gP8RnTI9JDuRTb2X2a8BhWaRBc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -54,13 +54,15 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2ab31f51-e113-4cff-83d8-f1e35fb33be6" name="Changes" comment="" />
-      <created>1715176697848</created>
+      <changelist id="77e2c58d-7250-402a-b3c6-040cbdfb3732" name="Changes" comment="" />
+      <created>1715587851782</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1715176697848</updated>
-      <workItem from="1715176703628" duration="735000" />
-      <workItem from="1715177490677" duration="13000" />
+      <updated>1715587851782</updated>
+      <workItem from="1715587853161" duration="594000" />
+      <workItem from="1715588693333" duration="389000" />
+      <workItem from="1715589112708" duration="1727000" />
+      <workItem from="1715602398598" duration="679000" />
     </task>
     <servers />
   </component>

@@ -26,8 +26,8 @@ class Test(models.Model):
 
 class MyPost(models.Model):
     title = models.CharField(max_length=200, blank=True, null=True)
-    intro = models.CharField(max_length=200, blank=True, null=True)
-    body = RichTextField(max_length=3000, blank=True, null=True)
+    intro = models.CharField(max_length=1000, blank=True, null=True)
+    body = RichTextField(blank=True, null=True)
     author = models.CharField(default='Admin', max_length=20, blank=True, null=True)
     featured_image = models.ImageField(upload_to='posts/', blank=True, null=True)
     date_created = models.DateTimeField(auto_now_add=True)

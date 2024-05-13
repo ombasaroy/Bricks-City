@@ -5,7 +5,6 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-# from bootstrap_datepicker.widgets import DatePicker
 
 from .models import Test, MyPost, Advert, BookSession, Message
 

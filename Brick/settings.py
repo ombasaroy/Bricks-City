@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*h7r!1o98!^@w^nh)2&++5r&me0_u6rv$@y=_12icu78j!go)(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['brickscitylego.com', 'www.brickscitylego.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'brickscitylego.com', 'www.brickscitylego.com']
 
 
 # Application definition
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['brickscitylego.com', 'www.brickscitylego.com']
 INSTALLED_APPS = [
     'BrickCity',
     'ckeditor',
+    'captcha'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_auto_logout.middleware.auto_logout',
 ]
 
 ROOT_URLCONF = 'Brick.urls'
@@ -144,12 +146,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Auto Logout
+AUTO_LOGOUT = {
+    'IDLE_TIME': 720, 
+    'MESSAGE':'Your session has expired. Please login again to continue',
+    }
 
-# SMTP configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ombasaroy@gmail.com'
-EMAIL_HOST_PASSWORD = 'iiiyzyhkucwvhzjj'
+# Recaptcha Keys
+
+# RECAPTCHA_PUBLIC_KEY = '6LfqptopAAAAAIqcRblgALSlSrFeQLA8SvdmuFDS'
+# RECAPTCHA_PRIVATE_KEY = '6LfqptopAAAAAPS2vynFYLbkHNDsCzVFd4vdBLEx'
 

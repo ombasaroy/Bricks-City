@@ -3,8 +3,8 @@
   
   // Preloader
   $(window).on('load', function () {
-    if ($('#preloader').length) {
-      $('#preloader').delay(100).fadeOut('slow', function () {
+    if ($('#backtotop').length) {
+      $('#backtotop').delay(0).fadeOut('slow', function () {
         $(this).remove();
       });
     }
