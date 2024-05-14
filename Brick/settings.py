@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'brickscitylego.com', 'www.brickscitylego.com']
 INSTALLED_APPS = [
     'BrickCity',
     'ckeditor',
-    'captcha'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -152,8 +151,13 @@ AUTO_LOGOUT = {
     'MESSAGE':'Your session has expired. Please login again to continue',
     }
 
-# Recaptcha Keys
 
-# RECAPTCHA_PUBLIC_KEY = '6LfqptopAAAAAIqcRblgALSlSrFeQLA8SvdmuFDS'
-# RECAPTCHA_PRIVATE_KEY = '6LfqptopAAAAAPS2vynFYLbkHNDsCzVFd4vdBLEx'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_POST = 587
+EMAIL_HOST_USER = 'brickscitylego.ke@gmail.com'
+# The code below is obtained from myaccount.google.com/apppasswords
+EMAIL_HOST_PASSWORD = 'qphvlerjsrxyaaem'  
+EMAIL_USE_TLS = True
+EMAIL_USE_SS = False
 

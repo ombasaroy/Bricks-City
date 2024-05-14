@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77e2c58d-7250-402a-b3c6-040cbdfb3732" name="Changes" comment="" />
+    <list default="true" id="77e2c58d-7250-402a-b3c6-040cbdfb3732" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Brick/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Brick/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BrickCity/templates/bricks/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/BrickCity/templates/bricks/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BrickCity/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/BrickCity/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,6 +68,8 @@
       <workItem from="1715588693333" duration="389000" />
       <workItem from="1715589112708" duration="1727000" />
       <workItem from="1715602398598" duration="679000" />
+      <workItem from="1715689661023" duration="303000" />
+      <workItem from="1715691387772" duration="23000" />
     </task>
     <servers />
   </component>

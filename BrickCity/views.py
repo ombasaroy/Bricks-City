@@ -108,20 +108,25 @@ def about(request):
 
 def contact(request):
     if request.method == 'POST':
-        fullname = request.POST.get('fullname')
+        fullname = request.POST.get('name').title()
         phone = request.POST.get('phone')
         email = request.POST.get('email')
+        subject = request.POST.get('subject')
         message = request.POST.get('message')
 
-        query = Message(fullname=fullname, phone=phone, email=email, message=message)
-        query.save()
-
-        messages.success(request, ' Your message has been sent')
+        send_mail(
+                subject=subject,
+                message=f'From: {email}\nName: {fullname}\nPhone Number: {phone}\nMessage: {message}',
+                recipient_list=['brickscitylego.ke@gmail.com'],
+                from_email= email,
+                fail_silently=False,                
+            )
+        messages.success(request, 'Hi ' + fullname + '. Your message has been sent successfully')
         return redirect('contact')
 
-    else:
-        context = {"nav": 'contact'}
-        return render(request, 'bricks/contact.html', context)
+    context = {"nav": 'contact'}
+    return render(request, 'bricks/contact.html', context)
+        
 
 
 def partnerships(request):
@@ -151,6 +156,7 @@ def booking(request):
         form = BookingForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data.get('fullname')
+            name = name.title()
             form.save()
             messages.success(request, 'Greetings ' + name + '. Your Booking is successful')
             return redirect('booking')
