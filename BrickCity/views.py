@@ -130,6 +130,22 @@ def contact(request):
 
 
 def partnerships(request):
+    if request.method == 'POST':
+        fullname = request.POST.get('name').title()
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        send_mail(
+                subject=subject,
+                message=f'From: {email}\nName: {fullname}\nPhone Number: {phone}\nMessage: {message}',
+                recipient_list=['brickscitylego.ke@gmail.com'],
+                from_email= email,
+                fail_silently=False,                
+            )
+        messages.success(request, 'Hi ' + fullname + '. Your message has been sent successfully')
+        return redirect('contact')
 
     context = {}
     return render(request, 'bricks/partnerships.html', context)
