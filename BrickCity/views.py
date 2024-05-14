@@ -115,8 +115,8 @@ def contact(request):
         message = request.POST.get('message')
 
         send_mail(
-                subject=subject,
-                message=f'From: {email}\nName: {fullname}\nPhone Number: {phone}\nMessage: {message}',
+                subject='MESSAGE',
+                message=f'From: {email}\nName: {fullname}\nPhone Number: {phone}\nSubject: {subject}\nMessage: {message}',
                 recipient_list=['brickscitylego.ke@gmail.com'],
                 from_email= email,
                 fail_silently=False,                
@@ -138,8 +138,8 @@ def partnerships(request):
         message = request.POST.get('message')
 
         send_mail(
-                subject=subject,
-                message=f'From: {email}\nName: {fullname}\nPhone Number: {phone}\nMessage: {message}',
+                subject='PARTNERSHIP',
+                message=f'From: {email}\nName: {fullname}\nPhone Number: {phone}\nSubject: {subject}\nMessage: {message}',
                 recipient_list=['brickscitylego.ke@gmail.com'],
                 from_email= email,
                 fail_silently=False,                
@@ -173,7 +173,25 @@ def booking(request):
         if form.is_valid():
             name = form.cleaned_data.get('fullname')
             name = name.title()
+            phone = form.cleaned_data.get('phone')
+            email = form.cleaned_data.get('email')
+            date = form.cleaned_data.get('date_booked')
             form.save()
+            send_mail(
+                subject='BOOKING',
+                message=f'From: {email}\nName: {name}\nPhone Number: {phone}\nEmail: {email}\nDate Booked: {date}',
+                recipient_list=['brickscitylego.ke@gmail.com'],
+                from_email= email,
+                fail_silently=False,                
+            )
+            send_mail(
+                subject='LEGO BOOKING',
+                message=f'Greetings {name}. Your have booked a Lego play date for {date}',
+                recipient_list=[email],
+                from_email= 'brickscitylego.ke@gmail.com',
+                fail_silently=False,                
+            )
+            
             messages.success(request, 'Greetings ' + name + '. Your Booking is successful')
             return redirect('booking')
         else:
