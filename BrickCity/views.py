@@ -152,7 +152,7 @@ def partnerships(request):
 
 
 def blog(request):
-    posts = MyPost.objects.all()
+    posts = MyPost.objects.order_by('-date_created')
 
     context = {'nav': 'blog', 'posts': posts}
     return render(request, 'bricks/blog.html', context)
@@ -228,7 +228,7 @@ def deletebooking(request, id):
 @login_required(login_url='signin')
 def bricksadmin(request):
     posts_count = MyPost.objects.all().count()
-    posts = MyPost.objects.all()
+    posts = MyPost.objects.order_by('-date_created')
 
     context = {'posts_count': posts_count, 'posts': posts}
     return render(request, 'bricksadmin/home.html', context)
@@ -360,4 +360,6 @@ def deleteadvert(request, id):
         return redirect('advert')
     context = {'ad': ad}
     return render(request, 'bricksadmin/deleteadvert.html', context)
+
+
 

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+:root {
+  --blue: #0e0620;
+  --white: #fff;
+  --orange: #ff9600;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family:"Nunito Sans";
+  color: var(--blue);
+  font-size: 1em;
+}
+button {
+  font-family:"Nunito Sans";
+}
+ul {
+  list-style-type: none;
+  padding-inline-start: 35px;
+}
+svg {
+  width: 100%;
+  visibility: hidden;
+}
+h1 {
+  font-size: 7.5em;
+  margin: 15px 0px;
+  font-weight:bold;
+}
+h2 {
+  font-weight:bold;
+}
+.hamburger-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 35px;
+  z-index: 2;
+
+  & button {
+    position: relative;
+    width: 30px;
+    height: 22px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+
+    & span {
+      position: absolute;
+      height: 3px;
+      background: #000;
+      width: 100%;
+      left: 0px;
+      top: 0px;
+      transition: 0.1s ease-in;
+      &:nth-child(2) {
+        top: 9px;
+      }
+      &:nth-child(3) {
+        top: 18px;
+      }
+    }
+  }
+  & [data-state="open"] {
+    & span {
+      &:first-child {
+        transform: rotate(45deg);
+        top: 10px;
+      }
+      &:nth-child(2) {
+        width: 0%;
+        opacity:0;
+      }
+      &:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 10px;
+      }
+    }
+  }
+}
+
+
+.btn {
+    background-color: var(--orange);
+    text-decoration: none;
+    color: var(--white);
+    padding: 10px 20px;
+    font-weight: 600;
+    margin-top: 10px;
+    border-radius: 30px;
+     
+}
+
+.btn:hover{
+    color: var(--orange);
+    border: 2px solid var(--orange);
+    background-color: transparent;
+}
+
+
+@media screen and (max-width:768px) {
+  body {
+    display:block;
+  }
+  .container {
+    margin-top:70px;
+    margin-bottom:70px;
+  }
+} 
+    </style>
+</head>
+<body>
+
+    <main>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 align-self-center">
+              <h1>404</h1>
+              <h2>OOPS!</h2>
+              <h4>The page you are looking for does not exist.
+                But you can click the button below
+                to go back to the homepage.
+              </h4>
+              <a class="btn mt-4" href="{% url 'index' %}">Go to Home</a>
+            </div>
+          </div>
+        </div>
+      </main>
+    
+
+</body>
+</html>
