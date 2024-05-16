@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*h7r!1o98!^@w^nh)2&++5r&me0_u6rv$@y=_12icu78j!go)('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'brickscitylego.com', 'www.brickscitylego.com']
 

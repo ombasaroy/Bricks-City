@@ -17,6 +17,8 @@ from .forms import CreateUserForm, CreateTestForm, MyPostForm, AdvertForm, Booki
 
 from .decorataors import unauthenticated_user
 
+from django.core.paginator import Paginator
+
 # Importing custom forms
 
 
@@ -152,7 +154,9 @@ def partnerships(request):
 
 
 def blog(request):
-    posts = MyPost.objects.order_by('-date_created')
+    paginator = Paginator(MyPost.objects.all().order_by('-date_created'), 6)  # displays 4 products in a random order
+    new_page = request.GET.get('page')
+    posts = paginator.get_page(new_page)
 
     context = {'nav': 'blog', 'posts': posts}
     return render(request, 'bricks/blog.html', context)
@@ -227,8 +231,11 @@ def deletebooking(request, id):
 #     Admin starts here
 @login_required(login_url='signin')
 def bricksadmin(request):
+    paginator = Paginator(MyPost.objects.all().order_by('-date_created'), 10)  # displays 10 products begining with the most current
+    new_page = request.GET.get('page')
+    posts = paginator.get_page(new_page)
+    
     posts_count = MyPost.objects.all().count()
-    posts = MyPost.objects.order_by('-date_created')
 
     context = {'posts_count': posts_count, 'posts': posts}
     return render(request, 'bricksadmin/home.html', context)

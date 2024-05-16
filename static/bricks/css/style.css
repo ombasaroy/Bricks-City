@@ -212,9 +212,15 @@ a:hover {
 }
 
 .a {
-  color: #ff9600;
+  background-color: #ff9600;
+  color: white;
   font-size: 1.3rem;
 }
+
+.page-item > .page-link{
+  color: #ff9600;
+}
+
 
 /*------/ Icon Box /------*/
 
@@ -1735,7 +1741,10 @@ footer .credits {
 
   .title-single {
     font-size: 1rem;
+
+    
   }
+
 }
 
 @media (min-width: 768px) {
@@ -1888,6 +1897,8 @@ footer .credits {
   .sinse-box .sinse-title {
     font-size: 1.8rem;
   }
+
+  
 }
 
 @media (min-width: 768px) and (min-width: 768px) {
@@ -2110,9 +2121,6 @@ footer .credits {
    .intro-single .title-single-box .title-single {
     font-size: 1.5rem;
   }
-
-
-
 }
 
   /* Style for the container */

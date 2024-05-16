@@ -19,7 +19,6 @@
                 <div class="bg-light text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">My posts</h6>
-{#                        <a href="">Show All</a>#}
                     </div>
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -29,7 +28,7 @@
                                     <th scope="col">Image</th>
                                     <th scope="col">Snippet</th>
                                     <th scope="col">Date Posted</th>
-                                    <th scope="col" style="text-align: center">Actions</th>
+                                    <th rowspan="3" style="text-align: center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,6 +54,33 @@
                 </div>
             </div>
             <!-- My Blog  End -->
+
+        <!-- Pagination starts here -->
+            <div class="row mt-3">
+                <div class="col-sm-12">
+                  <nav aria-label="pagination-a">
+                    <ul class="pagination justify-content-center">
+                      {% if posts.has_previous %}
+                        <li class="page-item" ><a class="page-link" href="?page=1" >&laquo First</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}">Previous</a></li>
+                      {% endif %}
+            
+                        <li class="page-item disabled"><a href="#" class="page-link">Page {{ posts.number }} of {{ posts.paginator.num_pages }}</a></li>
+            
+                      {% for i in nums %}
+                        <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                      {% endfor %}
+            
+                      {% if posts.has_next %}
+                        <li class="page-item"><a class="page-link" href="?page={{ posts.next_page_number }}">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="?page={{ posts.paginator.num_pages }}">Last &raquo</a></li>
+            
+                      {% endif %}
+            
+                    </ul>
+                  </nav>
+                </div>
+              </div>
 
 {% endblock %}
 
