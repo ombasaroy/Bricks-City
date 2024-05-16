@@ -53,18 +53,19 @@ from django.core.paginator import Paginator
 
 @unauthenticated_user
 def signup(request):
-    form = CreateUserForm
+    return HttpResponse ('Access estricted')
+    # form = CreateUserForm
 
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for ' + user)
-            return redirect('signin')
+    # if request.method == 'POST':
+    #     form = CreateUserForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         user = form.cleaned_data.get('username')
+    #         messages.success(request, 'Account was created for ' + user)
+    #         return redirect('signin')
 
-    context = {'form': form}
-    return render(request, 'signup.html', context)
+    # context = {'form': form}
+    # return render(request, 'signup.html', context)
 
 
 @unauthenticated_user
