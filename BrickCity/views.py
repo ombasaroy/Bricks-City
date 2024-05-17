@@ -53,7 +53,7 @@ from django.core.paginator import Paginator
 
 @unauthenticated_user
 def signup(request):
-    return HttpResponse ('Access estricted')
+    return HttpResponse ('Access restricted')
     # form = CreateUserForm
 
     # if request.method == 'POST':
