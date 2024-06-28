@@ -1206,20 +1206,44 @@ a:hover {
   font-size: 1.1rem;
   font-weight: 300;
   line-height: 1.6;
+  margin-right: 1.7rem;
+}
+
+.blog-combination{
+  display: flex;
+  flex-direction: row;
 }
 
 .post-content .post-intro {
-  font-size: 1.7rem;
-  font-weight: 300;
+  font-size: 1.5rem;
   margin-bottom: 4rem;
   line-height: 1.6;
   color: #000000;
   font-weight: 400;
 }
+.recent-posts {
+  padding: 3rem 0;
+
+}
+
+.recent-posts > h4{
+  color: #ff9600;
+}
+
+.recent-posts-lower{
+  display: none;
+}
+
+.recent-posts-lower > h5{
+  color: #ff9600;
+}
 
 .post-content p {
-  margin-bottom: 1.7rem;
+  /*margin-bottom: 1.rem;*/
+  text-align: justify;
+
 }
+
 
 .post-content .blockquote {
   padding: 1rem 3rem 1.7rem 3rem;
@@ -2070,6 +2094,14 @@ footer .credits {
 }
 
 @media (max-width: 575px) {
+
+  .recent-posts {
+    display: none;
+  }
+
+  .recent-posts-lower{
+    display: block;
+  }
   .box-collapse .title-box-d {
     left: 35px;
   }
@@ -2111,6 +2143,19 @@ footer .credits {
    .intro-single .title-single-box .title-single {
     font-size: 1.5rem;
   }
+
+   .blog-content{
+     margin-right: -30px;
+   }
+
+   .post-content {
+  margin-right: -4rem;
+}
+   .post-content .post-intro {
+  /*font-size: 1.5rem;*/
+}
+
+
 }
 
   /* Style for the container */

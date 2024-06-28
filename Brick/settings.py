@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*h7r!1o98!^@w^nh)2&++5r&me0_u6rv$@y=_12icu78j!go)(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'brickscitylego.com', 'www.brickscitylego.com']
+ALLOWED_HOSTS = ['127.0.0.1','brickscitylego.com', 'www.brickscitylego.com']
 
 
 # Application definition
@@ -154,10 +154,10 @@ AUTO_LOGOUT = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_POST = 587
+EMAIL_PORT = 587
 EMAIL_HOST_USER = 'brickscitylego.ke@gmail.com'
 # The code below is obtained from myaccount.google.com/apppasswords
 EMAIL_HOST_PASSWORD = 'qphvlerjsrxyaaem'  
 EMAIL_USE_TLS = True
-EMAIL_USE_SS = False
+EMAIL_USE_SSL = False
 

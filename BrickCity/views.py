@@ -131,7 +131,6 @@ def contact(request):
     return render(request, 'bricks/contact.html', context)
         
 
-
 def partnerships(request):
     if request.method == 'POST':
         fullname = request.POST.get('name').title()
@@ -165,8 +164,9 @@ def blog(request):
 
 def single_blog(request, id):
     post = MyPost.objects.get(id=id)
+    posts = MyPost.objects.order_by('-date_created')[:4]
 
-    context = {'post': post}
+    context = {'post': post, 'posts': posts}
     return render(request, 'bricks/single-blog.html', context)
 
 
@@ -187,16 +187,16 @@ def booking(request):
                 message=f'From: {email}\nName: {name}\nPhone Number: {phone}\nEmail: {email}\nDate Booked: {date}',
                 recipient_list=['brickscitylego.ke@gmail.com'],
                 from_email= email,
-                fail_silently=False,                
+                fail_silently=False,
             )
             send_mail(
                 subject='LEGO BOOKING',
                 message=f'Greetings {name}. Your have booked a Lego play date for {date}',
                 recipient_list=[email],
                 from_email= 'brickscitylego.ke@gmail.com',
-                fail_silently=False,                
+                fail_silently=False,
             )
-            
+
             messages.success(request, 'Greetings ' + name + '. Your Booking is successful')
             return redirect('booking')
         else:
